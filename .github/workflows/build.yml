@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: windows-latest
     env:
-         CARGO_TARGET_DIR: C:\temp
+         CARGO_TARGET_DIR: C:\temp\cargo
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -21,8 +21,8 @@ jobs:
 
       - name: Create Cargo target directory
         run: |
-          mkdir C:\temp
-          icacls C:\temp /grant:r "Users:(F)"
+          mkdir C:\temp\cargo
+          icacls C:\temp\cargo /grant:r "Users:(F)"
 
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
