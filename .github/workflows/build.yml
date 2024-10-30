@@ -10,13 +10,19 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    env:
+         CARGO_TARGET_DIR: C:\temp
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           repository: zed-industries/zed
           ref: main
+
+      - name: Create Cargo target directory
+        run: |
+          mkdir C:\temp
+          icacls C:\temp /grant:r "Users:(F)"
 
       - name: Install rust nightly
         uses: actions-rs/toolchain@v1
