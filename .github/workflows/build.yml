@@ -28,6 +28,11 @@ jobs:
       - name: Rust Cache
         uses: Swatinem/rust-cache@v2.7.3
 
+      - name: Cargo update
+        uses: actions-rs/cargo@v1
+        with:
+          command: update
+          
       - name: Build release
         uses: actions-rs/cargo@v1
         with:
